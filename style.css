@@ -1,19 +1,16 @@
 body {
-  background-image: url("pfp.jpeg");
+  background-image: url("minecraft.jpeg");
   background-repeat: no-repeat;
-  background-position: center;
-  height: 700px;
-  background-size: cover;
+  background-size: auto;
   margin: 34px;
   font-family: cursive;
 }
 
 .mypara {
-  color: white;
-  font-family: monospace;
+  font-family: serif;
   font-size: 30px;
 }
 
-img {
+.right {
  float:right;
 }
