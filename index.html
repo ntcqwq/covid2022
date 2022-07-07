@@ -9,13 +9,18 @@
     <h1>Noah's homepage</h1>
     <p>Favorite games</p>
       <ol class="mypara">
-        <li>Minecraft</li>
-        <li>Minecraft</li>
-        <li>Minecraft</li>
-        <li>Minecraft</li>
-        <li>Minecraft</li>
+        <li><a href="#" onclick="setimg('imgs/enderdragon.jpeg')">Ender Dragon</a></li>
+        <li><a href="#" onclick="setimg('imgs/wither.jpeg')">Wither</a></li>
+        <li><a href="#" onclick="setimg('imgs/warden.jpeg')">Warden</a></li>
+        <li><a href="#" onclick="setimg('imgs/ravenger.jpeg')">Ravenger</a></li>
+        <li><a href="#" onclick="setimg('imgs/irongolem.jpeg')">Iron Golem</a></li>
       </ol>
       <a href="https://www.minecraft.net/en-us">Mineceaft Official Website</a>
-      <img class="right" src="imgs/grassblock.jpeg" alt="Flower" width="400px">
+      <img id="myimg" src="imgs/grassblock.jpeg" class="right" alt="Flower" width="300px">
   </body>
+  <script type="text/javascript">
+    function setimg(imgname) {
+      document.getElementById('myimg').src = imgname;
+    }
+  </script>
 </html>
