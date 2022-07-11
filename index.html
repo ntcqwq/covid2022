@@ -5,22 +5,25 @@
     <title>Noah's homepage</title>
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body id='mybackground'>
     <h1>Noah's homepage</h1>
-    <p>Favorite games</p>
+    <p id='myinfo'><b><span style='font-size:50px;color:white;'>minecraf dirt blok</span></b></p>
       <ol class="mypara">
-        <li><a href="#" onclick="setimg('imgs/enderdragon.jpeg')">Ender Dragon</a></li>
-        <li><a href="#" onclick="setimg('imgs/wither.jpeg')">Wither</a></li>
-        <li><a href="#" onclick="setimg('imgs/warden.jpeg')">Warden</a></li>
-        <li><a href="#" onclick="setimg('imgs/ravenger.jpeg')">Ravenger</a></li>
-        <li><a href="#" onclick="setimg('imgs/irongolem.jpeg')">Iron Golem</a></li>
+        <li><a href="#" onclick="setimg('imgs/enderdragon.jpeg', 'bot')">Ender Dragon</a></li>
+        <li><a href="#" onclick="setimg('imgs/wither.jpeg', 'meh')">Wither</a></li>
+        <li><a href="#" onclick="setimg('imgs/warden.jpeg', 'so tanky nerf')">Warden</a></li>
+        <li><a href="#" onclick="setimg('imgs/ravenger.jpeg', 'cow')">Ravenger</a></li>
+        <li><a href="#" onclick="setimg('imgs/irongolem.jpeg', 'no reach')">Iron Golem</a></li>
       </ol>
       <a href="https://www.minecraft.net/en-us">Mineceaft Official Website</a>
-      <img id="myimg" src="imgs/grassblock.jpeg" class="right" alt="Flower" width="300px">
+      <img id="myimg" src="imgs/grassblock.jpeg" class="right" alt="logo" width="300px">
   </body>
   <script type="text/javascript">
-    function setimg(imgname) {
+    function setimg(imgname, desc) {
       document.getElementById('myimg').src = imgname;
+      document.getElementById('myimg').alt = desc;
+      document.getElementById('myinfo').innerHTML = `<b><span style='font-size:50px;color:white;'>${desc}</span></b>`;
+
     }
   </script>
 </html>
