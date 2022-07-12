@@ -9,14 +9,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="crossorigin=""/>
     <script src="data.json"></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="crossorigin=""></script>
   </head>
   <body>
     <nav>
       <div class="nav-wrapper">
         <a href="#" class="brand-logo"><i class="material-icons">apps</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="about.html">About</a></li>
+          <li><a href="about.html">© Noah 2022</a></li>
         </ul>
       </div>
     </nav>
@@ -26,7 +28,7 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">Map</span>
-            <p>Interactive Map</p>
+             <div id="map"></div>
           </div>
         </div>
       </div>
@@ -53,18 +55,21 @@
   <script type="text/javascript">
     getData();
     function getData() {
-      var allData = ""
-      var line = ""
-       for (var country = 0; country < (coviddata.data.length); country++) {
-         line += `<b><span style='color:violet'>${coviddata.data[country].location}</span></b>: ${coviddata.data[country].confirmed} Cases | ${coviddata.data[country].dead} Deaths `;
-         if (line.length >= 500) {
-           line += "<br>"
-           allData += line
-           line = ""
-         }
+      var allData = "<ul class='collection'>"
+       for (var country = 0; country < 5; country++) {
+         allData += `<li class="collection-item avatar"><img src="flags/${coviddata.data[country].location}.png" alt="flag" class="circle"><span class="title"><b><span style="color:violet">${coviddata.data[country].location}</span></b></span><p>${coviddata.data[country].confirmed} Cases <br>${coviddata.data[country].dead} Deaths</p><a href="#!" class="secondary-content"><i class="material-icons">grade</i></a></li>`
        }
+       allData += "</ul>";
        document.getElementById('mydata').innerHTML = allData;
-       document.getElementById('mydata').style.textAlign = "justify";
+    }
+    mapping();
+    function mapping() {
+      var map = L.map('map').setView([45.501, -73.56], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+      }).addTo(map);
+      var marker = L.marker([45.501, -73.56]).addTo(map);
     }
   </script>
 </html>
