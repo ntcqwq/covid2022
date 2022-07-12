@@ -57,7 +57,7 @@
     function getData() {
       var allData = "<ul class='collection'>"
        for (var country = 0; country < 5; country++) {
-         allData += `<li class="collection-item avatar"><img src="flags/${coviddata.data[country].location}.png" alt="flag" class="circle"><span class="title"><b><span style="color:violet">${coviddata.data[country].location}</span></b></span><p>${coviddata.data[country].confirmed} Cases <br>${coviddata.data[country].dead} Deaths</p><a href="#!" class="secondary-content"><i class="material-icons">grade</i></a></li>`
+         allData += `<li class="collection-item avatar"><img src="flags/${coviddata.data[country].location}.png" alt="flag" class="circle"><span class="title"><b><span style="color:teal">${coviddata.data[country].location}</span></b></span><p>${coviddata.data[country].confirmed} Cases <br>${coviddata.data[country].dead} Deaths</p><a href="#!" class="secondary-content"><i class="material-icons">grade</i></a></li>`
        }
        allData += "</ul>";
        document.getElementById('mydata').innerHTML = allData;
