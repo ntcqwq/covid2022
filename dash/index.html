@@ -36,7 +36,7 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">Graph</span>
-            <p>Graphs</p>
+            <p><br><br><br><br><br><br><br><br><br><br><br></p>
           </div>
         </div>
       </div>
@@ -56,20 +56,35 @@
     getData();
     function getData() {
       var allData = "<ul class='collection'>"
-       for (var country = 0; country < 5; country++) {
-         allData += `<li class="collection-item avatar"><img src="flags/${coviddata.data[country].location}.png" alt="flag" class="circle"><span class="title"><b><span style="color:teal">${coviddata.data[country].location}</span></b></span><p>${coviddata.data[country].confirmed} Cases <br>${coviddata.data[country].dead} Deaths</p><a href="#!" class="secondary-content"><i class="material-icons">grade</i></a></li>`
+       for (var country = 0; country < coviddata.data.length; country++) {
+         allData += `<li class="collection-item avatar"><img id="currentPhoto" src="https://www.crwflags.com/fotw/images/${coviddata.data[country].country_code.charAt(0)}/${coviddata.data[country].country_code}.gif" alt='Image not found' onerror="this.onerror=null;this.src='errorflags/${coviddata.data[country].location}.png';" class='circle';/><span class="title"><b><span style="color:teal">${coviddata.data[country].location}</span></b></span><p>${coviddata.data[country].confirmed} Cases <br>${coviddata.data[country].dead} Deaths</p><a href="#!" class="secondary-content"><i class="material-icons">grade</i></a></li>`
        }
        allData += "</ul>";
        document.getElementById('mydata').innerHTML = allData;
     }
     mapping();
     function mapping() {
-      var map = L.map('map').setView([45.501, -73.56], 13);
+      var map = L.map('map').setView([45.501, -73.56], 1);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
       }).addTo(map);
-      var marker = L.marker([45.501, -73.56]).addTo(map);
+      algo(map);
+    }
+
+    function algo(map) {
+      for (var c = 0; c < coviddata.data.length; c++) {
+        la = coviddata.data[c].latitude;
+        lo = coviddata.data[c].longitude;
+        r = (coviddata.data[c].dead)*2.5;
+        pop = `<span style="color:teal"><b>${coviddata.data[c].location}</b></span><br>${coviddata.data[c].confirmed} Cases<br>${coviddata.data[c].dead} Deaths<br>`
+        var circle = L.circle([la, lo], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: r
+        }).addTo(map).bindPopup(pop);
+      }
     }
   </script>
 </html>
