@@ -57,7 +57,7 @@
       <div class="col s12">
         <div class="card">
           <div class="card-content">
-            <span class="card-title">Data</span>
+            <span class="card-title">Data<br><span style="font-size:10.0pt">Deaths > Cases > Least Recovered</span></span>
             <p class='data' id='mydata' style='font-size:9px'></p>
           </div>
         </div>
@@ -70,8 +70,8 @@
     donut();
     function getData() {
       var allData = "<ul class='collection'>"
-       for (var country = 0; country < coviddata.data.sort(function(a,b){return b.recovered - a.recovered}).sort(function(a,b){return b.confirmed - a.confirmed}).sort(function(a,b){return b.dead - a.dead}).length; country++) {
-         allData += `<li class="collection-item avatar"><img id="currentPhoto" src="https://www.crwflags.com/fotw/images/${coviddata.data[country].country_code.charAt(0)}/${coviddata.data[country].country_code}.gif" alt='Image not found' onerror="this.onerror=null;this.src='errorflags/${coviddata.data[country].location}.png';" class='circle';/><span class="title"><b><span style="color:teal">${coviddata.data[country].location}</span></b></span><p>${coviddata.data[country].dead} Deaths<br>${coviddata.data[country].confirmed} Cases <br>${coviddata.data[country].recovered} Recovered</p></li>`
+       for (var country = 0; country < coviddata.data.sort(function(a,b){return a.recovered - b.recovered}).sort(function(a,b){return b.confirmed - a.confirmed}).sort(function(a,b){return b.dead - a.dead}).length; country++) {
+         allData += `<li class="collection-item avatar"><img id="currentPhoto" src="https://www.crwflags.com/fotw/images/${coviddata.data[country].country_code.charAt(0)}/${coviddata.data[country].country_code}.gif" alt='Image not found' onerror="this.onerror=null;this.src='errorflags/${coviddata.data[country].location}.png';" class='circle';/><span class="title"><b><span style="color:teal">${country+1}. ${coviddata.data[country].location}</span></b></span><p>${coviddata.data[country].dead} Deaths<br>${coviddata.data[country].confirmed} Cases <br>${coviddata.data[country].recovered} Recovered</p></li>`
        }
        allData += "</ul>";
        document.getElementById('mydata').innerHTML = allData;
@@ -104,7 +104,7 @@
       var deaths = []
       var nrecovered = []
       var colors = []
-      for (var i = 0; i < coviddata.data.sort(function(a,b){return b.recovered - a.recovered}).sort(function(a,b){return b.confirmed - a.confirmed}).sort(function(a,b){return b.dead - a.dead}).length; i++) {
+      for (var i = 0; i < coviddata.data.sort(function(a,b){return a.recovered - b.recovered}).sort(function(a,b){return b.confirmed - a.confirmed}).sort(function(a,b){return b.dead - a.dead}).length; i++) {
         locations.push(coviddata.data[i].location)
         nconfirmed.push(coviddata.data[i].confirmed)
         deaths.push(coviddata.data[i].dead)
