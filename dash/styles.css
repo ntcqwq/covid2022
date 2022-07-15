@@ -4,6 +4,17 @@ body {
   background-size: 100%;
 }
 
+.sc {
+  height: 500px;
+}
+
+.card:hover {
+  border-style: solid;
+  border-width: thin;
+  border-color: teal;
+}
+
+#doughnut_chart { width: 800px; height: 650px }
 
 .nav-wrapper {
   background-image: url("imgs/header3.jpeg");
@@ -15,4 +26,9 @@ body {
   margin-left: 25px;
 }
 
-#map { height: 300px }
+.page-footer {
+  background-image: url("imgs/header3.jpeg");
+  background-repeat: repeat;
+  background-size: 100%;
+}
+#map { height: 400px }
